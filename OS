@@ -1,0 +1,10 @@
+System Calls and Process Families: A Deep Dive into OS Fundamentals
+In modern computing, we often take for granted how programs interact with hardware and each other. For my recent Operating Systems assignment, I explored two pillars of system architecture: Process Management and File I/O.
+Spawning the Family Tree
+The first part of the project involved creating a parent process that spawns three child processes. In OS terms, this is about resource allocation and synchronization. When a parent process "forks" or spawns a child, the OS creates a new entry in the process table with a unique Process ID (PID).
+One of the most critical takeaways here is the Wait (or Join) mechanism. Without a join() call, a parent might finish its execution while children are still running, creating "orphan processes." Using synchronization ensures the OS manages the lifecycle of these processes efficiently, preventing resource leaks.
+The Power of System Calls
+The second task was implementing a file copy operation. While we often use high-level commands, under the hood, this relies on System Calls like open(), read(), and write().
+When a program wants to touch a file, it must cross the boundary from "User Mode" to "Kernel Mode." The OS checks permissions via the File Control Block (FCB) and uses Buffering to speed up the process. Writing to a disk is slow, so the OS collects data in a RAM buffer before committing it to physical storage in one efficient "burst."
+Conclusion
+Understanding these low-level interactions changes how you view software. It's not just code; it's a constant, highly-orchestrated conversation between the application and the Kernel to ensure stability, security, and performance.
